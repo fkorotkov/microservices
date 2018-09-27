@@ -1,0 +1,41 @@
+rootProject.name = 'microservices'
+
+import static groovy.io.FileType.DIRECTORIES
+import static groovy.io.FileVisitResult.CONTINUE
+import static groovy.io.FileVisitResult.SKIP_SUBTREE
+
+final excludedDirs = new HashSet(["build", "src", ".gogradle"])
+
+String getProjectName(File projectDir) {
+  return rootDir.toURI()
+          .relativize(projectDir.toURI())
+          .toString()
+          .replaceAll("/", ":")
+}
+
+rootDir.traverse(
+        type: DIRECTORIES,
+        preDir: {
+          if (excludedDirs.contains(it.name)) {
+            return SKIP_SUBTREE
+          }
+          return CONTINUE
+        }
+) { dir ->
+  if (new File(dir, "build.gradle").exists()) {
+    include getProjectName(dir)
+  }
+}
+
+ext.isCiServer = System.getenv().containsKey("CI")
+
+buildCache {
+  local {
+    enabled = !isCiServer
+  }
+  remote(HttpBuildCache) {
+    url = 'http://' + System.getenv().getOrDefault("CIRRUS_HTTP_CACHE_HOST", "localhost:12321") + "/"
+    enabled = isCiServer
+    push = true
+  }
+}
