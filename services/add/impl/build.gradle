@@ -8,10 +8,10 @@ buildscript {
   }
 }
 
-mainClassName = "com.fkorotkov.services.example.ExampleApplicationKt"
+mainClassName = "com.fkorotkov.services.add.AddApplicationKt"
 
 shadowJar {
-  baseName = 'example'
+  baseName = 'add'
   configurations = [
     project.configurations.compileClasspath,
     project.configurations.runtimeClasspath
@@ -27,13 +27,13 @@ jar {
 }
 
 runShadow {
-  args 'server', "$projectDir/config/example_config.yml"
+  args 'server', "$projectDir/config/add_config.yml"
   environment 'GOOGLE_APPLICATION_CREDENTIALS': "$rootDir/secrets/service-account-credentials.json"
 }
 
 dependencies {
-  implementation project(":services:example:api")
-  implementation project(":services:example:config")
+  implementation project(":services:add:api")
+  implementation project(":services:add:config")
 
   implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
 }

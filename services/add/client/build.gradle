@@ -1,0 +1,7 @@
+dependencies {
+  implementation project(":services:add:api")
+
+  implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
+  implementation libraries['org.jetbrains.kotlinx:kotlinx-coroutines-core']
+  implementation libraries['org.jetbrains.kotlinx:kotlinx-coroutines-guava']
+}

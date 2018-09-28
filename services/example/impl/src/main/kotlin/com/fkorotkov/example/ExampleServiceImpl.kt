@@ -1,8 +1,8 @@
 package com.fkorotkov.example
 
-import io.grpc.ServerBuilder
 import com.fkorotkov.example.configuration.ExampleServiceConfiguration
-import com.fkorotkov.example.grpc.ExampleGrpc
+import com.fkorotkov.services.example.grpc.ExampleGrpc
+import io.grpc.ServerBuilder
 
 fun main() {
   val serviceImpl = ExampleServiceImpl()

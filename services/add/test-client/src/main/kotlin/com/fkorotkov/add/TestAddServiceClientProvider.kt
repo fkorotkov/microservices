@@ -1,19 +1,19 @@
-package com.fkorotkov.example
+package com.fkorotkov.add
 
-import com.fkorotkov.example.impl.ExampleServiceClientImpl
-import com.fkorotkov.services.example.grpc.ExampleGrpc
 import io.grpc.ManagedChannel
 import io.grpc.inprocess.InProcessChannelBuilder
 import io.grpc.inprocess.InProcessServerBuilder
+import com.fkorotkov.add.impl.AddServiceClientImpl
+import com.fkorotkov.services.add.grpc.AddGrpc
 import java.util.concurrent.TimeUnit
 
 
-class TestExampleServiceProvider() {
+class TestAddServiceProvider() {
   companion object {
-    private val testServiceName = "example"
+    private val testServiceName = "add"
   }
 
-  private val serviceImpl: ExampleServiceImpl = ExampleServiceImpl()
+  private val serviceImpl: AddServiceImpl = AddServiceImpl()
 
   private val inProcessServer = InProcessServerBuilder.forName(testServiceName)
       .addService(serviceImpl)
@@ -31,13 +31,13 @@ class TestExampleServiceProvider() {
     InProcessChannelBuilder.forName(testServiceName).directExecutor().build()
   }
 
-  fun createClient(): ExampleServiceClient {
-    val futureStub = ExampleGrpc.newFutureStub(inprocessChannel)
-    return ExampleServiceClientImpl(futureStub)
+  fun createClient(): AddServiceClient {
+    val futureStub = AddGrpc.newFutureStub(inprocessChannel)
+    return AddServiceClientImpl(futureStub)
   }
 
-  fun createAsyncClient(): ExampleServiceClient {
-    val futureStub = ExampleGrpc.newFutureStub(inprocessChannel)
-    return ExampleServiceClientImpl(futureStub)
+  fun createAsyncClient(): AddServiceClient {
+    val futureStub = AddGrpc.newFutureStub(inprocessChannel)
+    return AddServiceClientImpl(futureStub)
   }
 }

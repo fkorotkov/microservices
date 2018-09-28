@@ -1,0 +1,7 @@
+dependencies {
+  implementation project(":services:add:api")
+  implementation project(":services:add:client")
+  implementation project(":services:add:impl")
+
+  implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
+}
