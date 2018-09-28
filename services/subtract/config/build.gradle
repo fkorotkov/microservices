@@ -1,0 +1,8 @@
+apply plugin: "kotlin"
+
+dependencies {
+  implementation project(":services:subtract:api")
+  implementation project(":services:subtract:client")
+
+  implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
+}
