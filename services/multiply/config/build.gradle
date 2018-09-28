@@ -1,0 +1,8 @@
+apply plugin: "kotlin"
+
+dependencies {
+  implementation project(":services:multiply:api")
+  implementation project(":services:multiply:client")
+
+  implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
+}
