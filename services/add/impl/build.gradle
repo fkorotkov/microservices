@@ -3,37 +3,37 @@ apply plugin: "com.github.johnrengelman.shadow"
 apply plugin: "kotlin"
 
 buildscript {
-  dependencies {
-    classpath libraries['com.github.jengelman.gradle.plugins:shadow']
-  }
+    dependencies {
+        classpath libraries['com.github.jengelman.gradle.plugins:shadow']
+    }
 }
 
 mainClassName = "com.fkorotkov.services.add.AddApplicationKt"
 
 shadowJar {
-  baseName = 'add'
-  configurations = [
-    project.configurations.compileClasspath,
-    project.configurations.runtimeClasspath
-  ]
+    baseName = 'add'
+    configurations = [
+            project.configurations.compileClasspath,
+            project.configurations.runtimeClasspath
+    ]
 }
 
 jar {
-  manifest {
-    attributes(
-      'Main-Class': mainClassName
-    )
-  }
+    manifest {
+        attributes(
+                'Main-Class': mainClassName
+        )
+    }
 }
 
 runShadow {
-  args 'server', "$projectDir/config/add_config.yml"
-  environment 'GOOGLE_APPLICATION_CREDENTIALS': "$rootDir/secrets/service-account-credentials.json"
+    args 'server', "$projectDir/config/add_config.yml"
+    environment 'GOOGLE_APPLICATION_CREDENTIALS': "$rootDir/secrets/service-account-credentials.json"
 }
 
 dependencies {
-  implementation project(":services:add:api")
-  implementation project(":services:add:config")
+    implementation project(":services:add:api")
+    implementation project(":services:add:config")
 
-  implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
+    implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
 }

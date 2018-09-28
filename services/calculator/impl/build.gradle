@@ -3,46 +3,46 @@ apply plugin: "com.github.johnrengelman.shadow"
 apply plugin: "kotlin"
 
 buildscript {
-  dependencies {
-    classpath libraries['com.github.jengelman.gradle.plugins:shadow']
-  }
+    dependencies {
+        classpath libraries['com.github.jengelman.gradle.plugins:shadow']
+    }
 }
 
 mainClassName = "com.fkorotkov.services.calculator.CalculatorApplicationKt"
 
 shadowJar {
-  baseName = 'calculator'
-  configurations = [
-    project.configurations.compileClasspath,
-    project.configurations.runtimeClasspath
-  ]
+    baseName = 'calculator'
+    configurations = [
+            project.configurations.compileClasspath,
+            project.configurations.runtimeClasspath
+    ]
 }
 
 jar {
-  manifest {
-    attributes(
-      'Main-Class': mainClassName
-    )
-  }
+    manifest {
+        attributes(
+                'Main-Class': mainClassName
+        )
+    }
 }
 
 runShadow {
-  args 'server', "$projectDir/config/calculator_config.yml"
-  environment 'GOOGLE_APPLICATION_CREDENTIALS': "$rootDir/secrets/service-account-credentials.json"
+    args 'server', "$projectDir/config/calculator_config.yml"
+    environment 'GOOGLE_APPLICATION_CREDENTIALS': "$rootDir/secrets/service-account-credentials.json"
 }
 
 dependencies {
-  implementation project(":services:add:client")
-  implementation project(":services:add:config")
-  implementation project(":services:calculator:api")
-  implementation project(":services:calculator:config")
-  implementation project(":services:multiply:client")
-  implementation project(":services:multiply:config")
-  implementation project(":services:subtract:client")
-  implementation project(":services:subtract:config")
+    implementation project(":services:add:client")
+    implementation project(":services:add:config")
+    implementation project(":services:calculator:api")
+    implementation project(":services:calculator:config")
+    implementation project(":services:multiply:client")
+    implementation project(":services:multiply:config")
+    implementation project(":services:subtract:client")
+    implementation project(":services:subtract:config")
 
-  implementation libraries['com.fathzer:javaluator']
-  implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
-  implementation libraries['org.jetbrains.kotlinx:kotlinx-coroutines-core']
-  implementation libraries['org.jetbrains.kotlinx:kotlinx-coroutines-guava']
+    implementation libraries['com.fathzer:javaluator']
+    implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
+    implementation libraries['org.jetbrains.kotlinx:kotlinx-coroutines-core']
+    implementation libraries['org.jetbrains.kotlinx:kotlinx-coroutines-guava']
 }
