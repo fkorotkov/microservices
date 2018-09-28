@@ -8,7 +8,7 @@ import io.grpc.inprocess.InProcessServerBuilder
 import java.util.concurrent.TimeUnit
 
 
-class TestMultiplyServiceProvider() {
+class TestMultiplyServiceProvider {
   companion object {
     private val testServiceName = "multiply"
   }
