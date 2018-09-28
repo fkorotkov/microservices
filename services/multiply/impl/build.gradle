@@ -1,0 +1,39 @@
+apply plugin: "application"
+apply plugin: "com.github.johnrengelman.shadow"
+apply plugin: "kotlin"
+
+buildscript {
+  dependencies {
+    classpath libraries['com.github.jengelman.gradle.plugins:shadow']
+  }
+}
+
+mainClassName = "com.fkorotkov.services.multiply.MultiplyApplicationKt"
+
+shadowJar {
+  baseName = 'multiply'
+  configurations = [
+    project.configurations.compileClasspath,
+    project.configurations.runtimeClasspath
+  ]
+}
+
+jar {
+  manifest {
+    attributes(
+      'Main-Class': mainClassName
+    )
+  }
+}
+
+runShadow {
+  args 'server', "$projectDir/config/multiply_config.yml"
+  environment 'GOOGLE_APPLICATION_CREDENTIALS': "$rootDir/secrets/service-account-credentials.json"
+}
+
+dependencies {
+  implementation project(":services:multiply:api")
+  implementation project(":services:multiply:config")
+
+  implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
+}
