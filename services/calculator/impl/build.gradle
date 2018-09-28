@@ -1,0 +1,39 @@
+apply plugin: "application"
+apply plugin: "com.github.johnrengelman.shadow"
+apply plugin: "kotlin"
+
+buildscript {
+  dependencies {
+    classpath libraries['com.github.jengelman.gradle.plugins:shadow']
+  }
+}
+
+mainClassName = "com.fkorotkov.services.calculator.CalculatorApplicationKt"
+
+shadowJar {
+  baseName = 'calculator'
+  configurations = [
+    project.configurations.compileClasspath,
+    project.configurations.runtimeClasspath
+  ]
+}
+
+jar {
+  manifest {
+    attributes(
+      'Main-Class': mainClassName
+    )
+  }
+}
+
+runShadow {
+  args 'server', "$projectDir/config/calculator_config.yml"
+  environment 'GOOGLE_APPLICATION_CREDENTIALS': "$rootDir/secrets/service-account-credentials.json"
+}
+
+dependencies {
+  implementation project(":services:calculator:api")
+  implementation project(":services:calculator:config")
+
+  implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
+}
