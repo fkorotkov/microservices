@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package com.fkorotkov.services.subtract;
+
+option java_multiple_files = true;
+option java_package = "com.fkorotkov.services.subtract.grpc";
+option java_outer_classname = "SubtractProto";
+
+service Subtract {
+  rpc Calculate (CalculateRequest) returns (CalculateResponse) {
+  }
+}
+
+message CalculateRequest {
+  int64 operand_one = 1;
+  int64 operand_two = 2;
+}
+
+message CalculateResponse {
+  int64 result = 1;
+}
