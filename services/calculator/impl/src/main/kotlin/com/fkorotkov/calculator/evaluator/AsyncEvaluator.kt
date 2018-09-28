@@ -9,9 +9,9 @@ import kotlinx.coroutines.experimental.Deferred
 import kotlinx.coroutines.experimental.async
 
 class AsyncEvaluator(
-  val addServiceClient: AddServiceClient,
-  val subtractServiceClient: SubtractServiceClient,
-  val multiplyServiceClient: MultiplyServiceClient
+    val addServiceClient: AddServiceClient,
+    val subtractServiceClient: SubtractServiceClient,
+    val multiplyServiceClient: MultiplyServiceClient
 ) : AbstractEvaluator<Deferred<Long>>(Operators.defaultParameters) {
   override fun toValue(literal: String, evaluationContext: Any?): Deferred<Long> = async { literal.toLong() }
 

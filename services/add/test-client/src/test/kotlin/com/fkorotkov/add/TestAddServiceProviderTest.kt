@@ -2,9 +2,8 @@ package com.fkorotkov.add
 
 import kotlinx.coroutines.experimental.runBlocking
 import org.junit.After
+import org.junit.Assert.assertEquals
 import org.junit.Before
-
-import org.junit.Assert.*
 import org.junit.Test
 
 class TestAddServiceProviderTest {

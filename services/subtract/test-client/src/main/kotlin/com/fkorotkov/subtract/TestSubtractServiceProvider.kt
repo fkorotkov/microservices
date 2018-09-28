@@ -1,7 +1,7 @@
 package com.fkorotkov.subtract
 
-import com.fkorotkov.subtract.impl.SubtractServiceClientImpl
 import com.fkorotkov.services.subtract.grpc.SubtractGrpc
+import com.fkorotkov.subtract.impl.SubtractServiceClientImpl
 import io.grpc.ManagedChannel
 import io.grpc.inprocess.InProcessChannelBuilder
 import io.grpc.inprocess.InProcessServerBuilder
