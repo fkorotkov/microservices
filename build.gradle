@@ -27,6 +27,7 @@ allprojects {
     jcenter()
     mavenCentral()
     maven { setUrl("https://dl.bintray.com/kotlin/kotlin-eap") }
+    maven { setUrl("https://kotlin.bintray.com/kotlinx" ) }
   }
 }
 
@@ -56,6 +57,12 @@ subprojects {
   test {
     testLogging {
       exceptionFormat = 'full'
+    }
+  }
+
+  kotlin {
+    experimental {
+      coroutines 'enable'
     }
   }
 }

@@ -1,14 +1,14 @@
 package com.fkorotkov.add
 
+import com.fkorotkov.add.impl.AddServiceClientImpl
+import com.fkorotkov.services.add.grpc.AddGrpc
 import io.grpc.ManagedChannel
 import io.grpc.inprocess.InProcessChannelBuilder
 import io.grpc.inprocess.InProcessServerBuilder
-import com.fkorotkov.add.impl.AddServiceClientImpl
-import com.fkorotkov.services.add.grpc.AddGrpc
 import java.util.concurrent.TimeUnit
 
 
-class TestAddServiceProvider() {
+class TestAddServiceProvider {
   companion object {
     private val testServiceName = "add"
   }
@@ -31,13 +31,8 @@ class TestAddServiceProvider() {
     InProcessChannelBuilder.forName(testServiceName).directExecutor().build()
   }
 
-  fun createClient(): AddServiceClient {
+  val client: AddServiceClient by lazy {
     val futureStub = AddGrpc.newFutureStub(inprocessChannel)
-    return AddServiceClientImpl(futureStub)
-  }
-
-  fun createAsyncClient(): AddServiceClient {
-    val futureStub = AddGrpc.newFutureStub(inprocessChannel)
-    return AddServiceClientImpl(futureStub)
+    AddServiceClientImpl(futureStub)
   }
 }
