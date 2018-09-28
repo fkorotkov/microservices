@@ -31,13 +31,8 @@ class TestExampleServiceProvider() {
     InProcessChannelBuilder.forName(testServiceName).directExecutor().build()
   }
 
-  fun createClient(): ExampleServiceClient {
+  val client: ExampleServiceClient by lazy {
     val futureStub = ExampleGrpc.newFutureStub(inprocessChannel)
-    return ExampleServiceClientImpl(futureStub)
-  }
-
-  fun createAsyncClient(): ExampleServiceClient {
-    val futureStub = ExampleGrpc.newFutureStub(inprocessChannel)
-    return ExampleServiceClientImpl(futureStub)
+    ExampleServiceClientImpl(futureStub)
   }
 }
