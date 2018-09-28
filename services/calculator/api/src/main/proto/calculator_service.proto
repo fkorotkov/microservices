@@ -7,4 +7,14 @@ option java_package = "com.fkorotkov.services.calculator.grpc";
 option java_outer_classname = "CalculatorProto";
 
 service Calculator {
+  rpc Evaluate (EvaluateRequest) returns (EvaluateResponse) {
+  }
+}
+
+message EvaluateRequest {
+  string expression = 1;
+}
+
+message EvaluateResponse {
+  int64 result = 1;
 }

@@ -1,5 +1,6 @@
 package com.fkorotkov.calculator
 
+import com.fkorotkov.add.AddServiceClient
 import com.fkorotkov.calculator.impl.CalculatorServiceClientImpl
 import com.fkorotkov.services.calculator.grpc.CalculatorGrpc
 import io.grpc.ManagedChannel
@@ -8,12 +9,12 @@ import io.grpc.inprocess.InProcessServerBuilder
 import java.util.concurrent.TimeUnit
 
 
-class TestCalculatorServiceProvider() {
+class TestCalculatorServiceProvider(addServiceClient: AddServiceClient) {
   companion object {
     private val testServiceName = "calculator"
   }
 
-  private val serviceImpl: CalculatorServiceImpl = CalculatorServiceImpl()
+  private val serviceImpl: CalculatorServiceImpl = CalculatorServiceImpl(addServiceClient)
 
   private val inProcessServer = InProcessServerBuilder.forName(testServiceName)
       .addService(serviceImpl)
@@ -31,13 +32,8 @@ class TestCalculatorServiceProvider() {
     InProcessChannelBuilder.forName(testServiceName).directExecutor().build()
   }
 
-  fun createClient(): CalculatorServiceClient {
+  val client: CalculatorServiceClient by lazy {
     val futureStub = CalculatorGrpc.newFutureStub(inprocessChannel)
-    return CalculatorServiceClientImpl(futureStub)
-  }
-
-  fun createAsyncClient(): CalculatorServiceClient {
-    val futureStub = CalculatorGrpc.newFutureStub(inprocessChannel)
-    return CalculatorServiceClientImpl(futureStub)
+    CalculatorServiceClientImpl(futureStub)
   }
 }

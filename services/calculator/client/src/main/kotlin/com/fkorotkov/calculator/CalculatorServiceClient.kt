@@ -1,3 +1,5 @@
 package com.fkorotkov.calculator
 
-interface CalculatorServiceClient
+interface CalculatorServiceClient {
+  suspend fun evaluate(expression: String): Long
+}
