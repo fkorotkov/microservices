@@ -7,14 +7,17 @@ import com.fkorotkov.calculator.evaluator.AsyncEvaluator
 import com.fkorotkov.services.calculator.grpc.CalculatorGrpc
 import com.fkorotkov.services.calculator.grpc.EvaluateRequest
 import com.fkorotkov.services.calculator.grpc.EvaluateResponse
+import com.fkorotkov.subtract.SubtractServiceClient
+import com.fkorotkov.subtract.configuration.SubtractServiceConfiguration
 import io.grpc.ServerBuilder
 import io.grpc.stub.StreamObserver
 import kotlinx.coroutines.experimental.runBlocking
 
 fun main() {
   val addServiceClient = AddServiceConfiguration.createClient()
+  val subtractServiceClient = SubtractServiceConfiguration.createClient()
 
-  val serviceImpl = CalculatorServiceImpl(addServiceClient)
+  val serviceImpl = CalculatorServiceImpl(addServiceClient, subtractServiceClient)
   val server = ServerBuilder.forPort(CalculatorServiceConfiguration.GRPC_PORT)
       .addService(serviceImpl)
       .build()
@@ -23,8 +26,11 @@ fun main() {
   server.awaitTermination()
 }
 
-class CalculatorServiceImpl(addServiceClient: AddServiceClient) : CalculatorGrpc.CalculatorImplBase() {
-  private val evaluator = AsyncEvaluator(addServiceClient)
+class CalculatorServiceImpl(
+    addServiceClient: AddServiceClient,
+    subtractServiceClient: SubtractServiceClient
+) : CalculatorGrpc.CalculatorImplBase() {
+  private val evaluator = AsyncEvaluator(addServiceClient, subtractServiceClient)
   override fun evaluate(request: EvaluateRequest, responseObserver: StreamObserver<EvaluateResponse>) {
     try {
       val result = runBlocking {
