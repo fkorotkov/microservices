@@ -3,18 +3,19 @@ package com.fkorotkov.calculator
 import com.fkorotkov.add.AddServiceClient
 import com.fkorotkov.calculator.impl.CalculatorServiceClientImpl
 import com.fkorotkov.services.calculator.grpc.CalculatorGrpc
+import com.fkorotkov.subtract.SubtractServiceClient
 import io.grpc.ManagedChannel
 import io.grpc.inprocess.InProcessChannelBuilder
 import io.grpc.inprocess.InProcessServerBuilder
 import java.util.concurrent.TimeUnit
 
 
-class TestCalculatorServiceProvider(addServiceClient: AddServiceClient) {
+class TestCalculatorServiceProvider(addServiceClient: AddServiceClient, subtractServiceClient: SubtractServiceClient) {
   companion object {
     private val testServiceName = "calculator"
   }
 
-  private val serviceImpl: CalculatorServiceImpl = CalculatorServiceImpl(addServiceClient)
+  private val serviceImpl: CalculatorServiceImpl = CalculatorServiceImpl(addServiceClient, subtractServiceClient)
 
   private val inProcessServer = InProcessServerBuilder.forName(testServiceName)
       .addService(serviceImpl)
