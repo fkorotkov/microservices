@@ -5,4 +5,5 @@ dependencies {
   implementation project(":services:example:impl")
 
   implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
+  testImplementation libraries['junit:junit']
 }
