@@ -13,7 +13,8 @@ import com.fkorotkov.subtract.SubtractServiceClient
 import com.fkorotkov.subtract.configuration.SubtractServiceConfiguration
 import io.grpc.ServerBuilder
 import io.grpc.stub.StreamObserver
-import kotlinx.coroutines.experimental.runBlocking
+import kotlinx.coroutines.experimental.GlobalScope
+import kotlinx.coroutines.experimental.launch
 
 fun main() {
   val addServiceClient = AddServiceConfiguration.createClient()
@@ -36,17 +37,15 @@ class CalculatorServiceImpl(
 ) : CalculatorGrpc.CalculatorImplBase() {
   private val evaluator = AsyncEvaluator(addServiceClient, subtractServiceClient, multiplyServiceClient)
   override fun evaluate(request: EvaluateRequest, responseObserver: StreamObserver<EvaluateResponse>) {
-    try {
-      val result = runBlocking {
-        evaluator.evaluate(request.expression).await()
-      }
+    GlobalScope.launch {
+      val result = evaluator.evaluate(request.expression).await()
       val response = EvaluateResponse.newBuilder()
           .setResult(result)
           .build()
       responseObserver.onNext(response)
       responseObserver.onCompleted()
-    } catch (e: Exception) {
-      responseObserver.onError(e)
+    }.invokeOnCompletion { ex ->
+      ex?.also { responseObserver.onError(it) }
     }
   }
 }
