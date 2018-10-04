@@ -33,17 +33,17 @@
     {
       "group": "org.jetbrains.kotlin",
       "name": "kotlin-reflect",
-      "version": "1.3.0-rc-57"
+      "version": "1.3.0-rc-146"
     },
     {
       "group": "org.jetbrains.kotlin",
       "name": "kotlin-stdlib",
-      "version": "1.3.0-rc-57"
+      "version": "1.3.0-rc-146"
     },
     {
       "group": "org.jetbrains.kotlin",
       "name": "kotlin-test-junit",
-      "version": "1.3.0-rc-57"
+      "version": "1.3.0-rc-146"
     },
     {
       "group": "org.jetbrains.kotlinx",
