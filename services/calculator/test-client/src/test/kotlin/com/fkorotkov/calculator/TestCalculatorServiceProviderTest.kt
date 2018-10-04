@@ -36,34 +36,26 @@ class TestCalculatorServiceProviderTest {
   }
 
   @Test
-  fun complex() {
-    val result = runBlocking {
-      calculatorProvider.client.evaluate("1+2*3-(4-5*6)")
-    }
+  fun complex() = runBlocking {
+    val result = calculatorProvider.client.evaluate("1+2*3-(4-5*6)")
     assertEquals(33, result)
   }
 
   @Test
-  fun addTwoNumbers() {
-    val result = runBlocking {
-      calculatorProvider.client.evaluate("1 + 2")
-    }
+  fun addTwoNumbers() = runBlocking {
+    val result = calculatorProvider.client.evaluate("1 + 2")
     assertEquals(3, result)
   }
 
   @Test
-  fun subtractTwoNumbers() {
-    val result = runBlocking {
-      calculatorProvider.client.evaluate("1 - 2")
-    }
+  fun subtractTwoNumbers() = runBlocking {
+    val result = calculatorProvider.client.evaluate("1 - 2")
     assertEquals(-1, result)
   }
 
   @Test
-  fun multiplyTwoNumbers() {
-    val result = runBlocking {
-      calculatorProvider.client.evaluate("2 * 2")
-    }
+  fun multiplyTwoNumbers() = runBlocking {
+    val result = calculatorProvider.client.evaluate("2 * 2")
     assertEquals(4, result)
   }
 }
