@@ -18,7 +18,7 @@
     {
       "group": "com.github.jengelman.gradle.plugins",
       "name": "shadow",
-      "version": "2.0.4"
+      "version": "4.0.1"
     },
     {
       "group": "com.fathzer",
@@ -48,12 +48,12 @@
     {
       "group": "org.jetbrains.kotlinx",
       "name": "kotlinx-coroutines-core",
-      "version": "0.27.0"
+      "version": "0.30.1"
     },
     {
       "group": "org.jetbrains.kotlinx",
       "name": "kotlinx-coroutines-guava",
-      "version": "0.27.0"
+      "version": "0.30.1"
     },
     {
       "group": "io.grpc",
@@ -63,32 +63,32 @@
     {
       "group": "io.grpc",
       "name": "grpc-core",
-      "version": "1.13.2"
+      "version": "1.15.1"
     },
     {
       "group": "io.grpc",
       "name": "grpc-context",
-      "version": "1.13.2"
+      "version": "1.15.1"
     },
     {
       "group": "io.grpc",
       "name": "grpc-netty",
-      "version": "1.13.2"
+      "version": "1.15.1"
     },
     {
       "group": "io.grpc",
       "name": "grpc-protobuf",
-      "version": "1.13.2"
+      "version": "1.15.1"
     },
     {
       "group": "io.grpc",
       "name": "grpc-stub",
-      "version": "1.13.2"
+      "version": "1.15.1"
     },
     {
       "group": "io.grpc",
       "name": "protoc-gen-grpc-java",
-      "version": "1.13.2"
+      "version": "1.15.1"
     }
   ]
 }
