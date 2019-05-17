@@ -14,5 +14,5 @@ find $SERVICE_NAME -name "example*" -type f | sed -e "p;s/example/$SERVICE_NAME/
 find $SERVICE_NAME -name "*Example*" -type f | sed -e "p;s/Example/$SERVICE_NAME_CAPITALIZED/" | xargs -n2 mv
 find $SERVICE_NAME -name "example*" -type d | sed -e "p;s/example/$SERVICE_NAME/" | xargs -n2 mv
 
-find $SERVICE_NAME -type f -exec sed -i '' "s/Example/$SERVICE_NAME_CAPITALIZED/g" {} +
-find $SERVICE_NAME -type f -exec sed -i '' "s/example/$SERVICE_NAME/g" {} +
+find "./$SERVICE_NAME" -type f -exec sed -i -e "s/example/$SERVICE_NAME/g" {} \;
+find "./$SERVICE_NAME" -type f -exec sed -i -e "s/Example/$SERVICE_NAME_CAPITALIZED/g" {} \;
