@@ -3,7 +3,7 @@ package com.fkorotkov.subtract.impl
 import com.fkorotkov.services.subtract.grpc.CalculateRequest
 import com.fkorotkov.services.subtract.grpc.SubtractGrpc
 import com.fkorotkov.subtract.SubtractServiceClient
-import kotlinx.coroutines.experimental.guava.await
+import kotlinx.coroutines.guava.asDeferred
 
 class SubtractServiceClientImpl(private val service: SubtractGrpc.SubtractFutureStub) : SubtractServiceClient {
   override suspend fun calculate(a: Long, b: Long): Long {
@@ -11,6 +11,6 @@ class SubtractServiceClientImpl(private val service: SubtractGrpc.SubtractFuture
         .setOperandOne(a)
         .setOperandTwo(b)
         .build()
-    return service.calculate(request).await().result
+    return service.calculate(request).asDeferred().await().result
   }
 }

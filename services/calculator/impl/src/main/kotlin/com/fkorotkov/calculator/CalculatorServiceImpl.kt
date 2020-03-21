@@ -13,8 +13,8 @@ import com.fkorotkov.subtract.SubtractServiceClient
 import com.fkorotkov.subtract.configuration.SubtractServiceConfiguration
 import io.grpc.ServerBuilder
 import io.grpc.stub.StreamObserver
-import kotlinx.coroutines.experimental.GlobalScope
-import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 fun main() {
   val addServiceClient = AddServiceConfiguration.createClient()

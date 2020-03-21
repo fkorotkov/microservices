@@ -5,7 +5,7 @@ package com.fkorotkov.calculator
 import com.fkorotkov.add.TestAddServiceProvider
 import com.fkorotkov.multiply.TestMultiplyServiceProvider
 import com.fkorotkov.subtract.TestSubtractServiceProvider
-import kotlinx.coroutines.experimental.runBlocking
+import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before

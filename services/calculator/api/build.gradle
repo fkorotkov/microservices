@@ -36,4 +36,5 @@ dependencies {
     api libraries['io.grpc:grpc-core']
     api libraries['io.grpc:grpc-protobuf']
     api libraries['io.grpc:grpc-stub']
+    api libraries['javax.annotation:javax.annotation-api']
 }
