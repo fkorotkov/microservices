@@ -10,9 +10,9 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 
 class AsyncEvaluator(
-    val addServiceClient: AddServiceClient,
-    val subtractServiceClient: SubtractServiceClient,
-    val multiplyServiceClient: MultiplyServiceClient
+  val addServiceClient: AddServiceClient,
+  val subtractServiceClient: SubtractServiceClient,
+  val multiplyServiceClient: MultiplyServiceClient
 ) : AbstractEvaluator<Deferred<Long>>(Operators.defaultParameters) {
   override fun toValue(literal: String, evaluationContext: Any?): Deferred<Long> = GlobalScope.async { literal.toLong() }
 

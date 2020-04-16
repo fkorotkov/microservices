@@ -3,32 +3,32 @@ apply plugin: "com.github.johnrengelman.shadow"
 apply plugin: "kotlin"
 
 buildscript {
-    dependencies {
-        classpath libraries['com.github.jengelman.gradle.plugins:shadow']
-    }
+  dependencies {
+    classpath libraries['com.github.jengelman.gradle.plugins:shadow']
+  }
 }
 
 mainClassName = "com.fkorotkov.services.example.ExampleApplicationKt"
 
 shadowJar {
-    baseName = 'example'
-    configurations = [
-            project.configurations.compileClasspath,
-            project.configurations.runtimeClasspath
-    ]
+  baseName = 'example'
+  configurations = [
+    project.configurations.compileClasspath,
+    project.configurations.runtimeClasspath
+  ]
 }
 
 jar {
-    manifest {
-        attributes(
-                'Main-Class': mainClassName
-        )
-    }
+  manifest {
+    attributes(
+      'Main-Class': mainClassName
+    )
+  }
 }
 
 dependencies {
-    implementation project(":services:example:api")
-    implementation project(":services:example:config")
+  implementation project(":services:example:api")
+  implementation project(":services:example:config")
 
-    implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
+  implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
 }

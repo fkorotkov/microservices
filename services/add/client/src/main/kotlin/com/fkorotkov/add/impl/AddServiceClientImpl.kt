@@ -8,9 +8,9 @@ import kotlinx.coroutines.guava.asDeferred
 class AddServiceClientImpl(private val service: AddGrpc.AddFutureStub) : AddServiceClient {
   override suspend fun calculate(a: Long, b: Long): Long {
     val request = CalculateRequest.newBuilder()
-        .setOperandOne(a)
-        .setOperandTwo(b)
-        .build()
+      .setOperandOne(a)
+      .setOperandTwo(b)
+      .build()
     return service.calculate(request).asDeferred().await().result
   }
 }

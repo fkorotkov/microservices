@@ -1,9 +1,9 @@
 dependencies {
-    api project(":services:example:client")
+  api project(":services:example:client")
 
-    implementation project(":services:example:api")
-    implementation project(":services:example:impl")
+  implementation project(":services:example:api")
+  implementation project(":services:example:impl")
 
-    implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
-    testImplementation libraries['junit:junit']
+  implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
+  testImplementation libraries['junit:junit']
 }

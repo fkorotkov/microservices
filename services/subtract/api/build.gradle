@@ -1,40 +1,40 @@
 apply plugin: "com.google.protobuf"
 
 buildscript {
-    dependencies {
-        classpath libraries['com.google.protobuf:protobuf-gradle-plugin']
-    }
+  dependencies {
+    classpath libraries['com.google.protobuf:protobuf-gradle-plugin']
+  }
 }
 
 protobuf {
-    protoc {
-        artifact = libraries['com.google.protobuf:protoc']
+  protoc {
+    artifact = libraries['com.google.protobuf:protoc']
+  }
+  plugins {
+    grpc {
+      artifact = libraries['io.grpc:protoc-gen-grpc-java']
     }
-    plugins {
-        grpc {
-            artifact = libraries['io.grpc:protoc-gen-grpc-java']
-        }
+  }
+  generateProtoTasks {
+    all()*.plugins {
+      grpc {}
     }
-    generateProtoTasks {
-        all()*.plugins {
-            grpc {}
-        }
-    }
+  }
 }
 
 sourceSets {
-    main {
-        java {
-            srcDir file("${protobuf.generatedFilesBaseDir}/main/grpc")
-            srcDir file("${protobuf.generatedFilesBaseDir}/main/java")
-        }
+  main {
+    java {
+      srcDir file("${protobuf.generatedFilesBaseDir}/main/grpc")
+      srcDir file("${protobuf.generatedFilesBaseDir}/main/java")
     }
+  }
 }
 
 dependencies {
-    api libraries['com.google.protobuf:protobuf-java']
-    api libraries['io.grpc:grpc-core']
-    api libraries['io.grpc:grpc-protobuf']
-    api libraries['io.grpc:grpc-stub']
-    api libraries['javax.annotation:javax.annotation-api']
+  api libraries['com.google.protobuf:protobuf-java']
+  api libraries['io.grpc:grpc-core']
+  api libraries['io.grpc:grpc-protobuf']
+  api libraries['io.grpc:grpc-stub']
+  api libraries['javax.annotation:javax.annotation-api']
 }

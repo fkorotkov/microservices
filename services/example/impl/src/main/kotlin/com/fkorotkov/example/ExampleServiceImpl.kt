@@ -7,9 +7,9 @@ import io.grpc.ServerBuilder
 fun main() {
   val serviceImpl = ExampleServiceImpl()
   val server = ServerBuilder.forPort(ExampleServiceConfiguration.GRPC_PORT)
-      .addService(serviceImpl)
-      .build()
-      .start()
+    .addService(serviceImpl)
+    .build()
+    .start()
   println("Started GRPC server on ${server.port} port...")
   server.awaitTermination()
 }

@@ -10,9 +10,9 @@ object CalculatorServiceConfiguration {
 
   fun createClient(): CalculatorServiceClient {
     val channel = ManagedChannelBuilder.forAddress("calculator", GRPC_PORT)
-        .enableRetry()
-        .maxRetryAttempts(3)
-        .build()
+      .enableRetry()
+      .maxRetryAttempts(3)
+      .build()
     val futureStub = CalculatorGrpc.newFutureStub(channel)
 
     return CalculatorServiceClientImpl(futureStub)

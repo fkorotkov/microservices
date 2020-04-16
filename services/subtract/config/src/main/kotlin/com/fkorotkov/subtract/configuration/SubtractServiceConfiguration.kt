@@ -10,9 +10,9 @@ object SubtractServiceConfiguration {
 
   fun createClient(): SubtractServiceClient {
     val channel = ManagedChannelBuilder.forAddress("subtract", GRPC_PORT)
-        .enableRetry()
-        .maxRetryAttempts(3)
-        .build()
+      .enableRetry()
+      .maxRetryAttempts(3)
+      .build()
     val futureStub = SubtractGrpc.newFutureStub(channel)
 
     return SubtractServiceClientImpl(futureStub)

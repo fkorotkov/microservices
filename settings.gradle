@@ -8,19 +8,19 @@ final excludedDirs = new HashSet(["build", "src", ".gogradle"])
 
 String getProjectName(File projectDir) {
   return rootDir.toURI()
-          .relativize(projectDir.toURI())
-          .toString()
-          .replaceAll("/", ":")
+    .relativize(projectDir.toURI())
+    .toString()
+    .replaceAll("/", ":")
 }
 
 rootDir.traverse(
-        type: DIRECTORIES,
-        preDir: {
-          if (excludedDirs.contains(it.name)) {
-            return SKIP_SUBTREE
-          }
-          return CONTINUE
-        }
+  type: DIRECTORIES,
+  preDir: {
+    if (excludedDirs.contains(it.name)) {
+      return SKIP_SUBTREE
+    }
+    return CONTINUE
+  }
 ) { dir ->
   if (new File(dir, "build.gradle").exists()) {
     include getProjectName(dir)

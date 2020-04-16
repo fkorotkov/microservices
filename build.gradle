@@ -24,7 +24,7 @@ allprojects {
     mavenLocal()
     jcenter()
     mavenCentral()
-    maven { setUrl("https://kotlin.bintray.com/kotlinx" ) }
+    maven { setUrl("https://kotlin.bintray.com/kotlinx") }
   }
 }
 

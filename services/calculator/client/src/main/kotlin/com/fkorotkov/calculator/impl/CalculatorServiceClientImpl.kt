@@ -8,8 +8,8 @@ import kotlinx.coroutines.guava.asDeferred
 class CalculatorServiceClientImpl(private val service: CalculatorGrpc.CalculatorFutureStub) : CalculatorServiceClient {
   override suspend fun evaluate(expression: String): Long {
     val request = EvaluateRequest.newBuilder()
-        .setExpression(expression)
-        .build()
+      .setExpression(expression)
+      .build()
     return service.evaluate(request).asDeferred().await().result
   }
 }

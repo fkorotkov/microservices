@@ -12,9 +12,9 @@ import java.util.concurrent.TimeUnit
 
 
 class TestCalculatorServiceProvider(
-    addServiceClient: AddServiceClient,
-    subtractServiceClient: SubtractServiceClient,
-    multiplyServiceClient: MultiplyServiceClient
+  addServiceClient: AddServiceClient,
+  subtractServiceClient: SubtractServiceClient,
+  multiplyServiceClient: MultiplyServiceClient
 ) {
   companion object {
     private val testServiceName = "calculator"
@@ -23,9 +23,9 @@ class TestCalculatorServiceProvider(
   private val serviceImpl: CalculatorServiceImpl = CalculatorServiceImpl(addServiceClient, subtractServiceClient, multiplyServiceClient)
 
   private val inProcessServer = InProcessServerBuilder.forName(testServiceName)
-      .addService(serviceImpl)
-      .directExecutor()
-      .build()
+    .addService(serviceImpl)
+    .directExecutor()
+    .build()
 
   fun start() = inProcessServer.start()
 

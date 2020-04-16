@@ -11,10 +11,10 @@ object Operators {
   val MULTIPLY = Operator("*", 2, Operator.Associativity.LEFT, 12)
 
   val defaultParameters =
-      Parameters().apply {
-        add(PLUS)
-        add(MINUS)
-        add(MULTIPLY)
-        addExpressionBracket(BracketPair.PARENTHESES)
-      }
+    Parameters().apply {
+      add(PLUS)
+      add(MINUS)
+      add(MULTIPLY)
+      addExpressionBracket(BracketPair.PARENTHESES)
+    }
 }

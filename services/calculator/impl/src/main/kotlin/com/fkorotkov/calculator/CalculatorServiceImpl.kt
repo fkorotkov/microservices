@@ -23,25 +23,25 @@ fun main() {
 
   val serviceImpl = CalculatorServiceImpl(addServiceClient, subtractServiceClient, multiplyServiceClient)
   val server = ServerBuilder.forPort(CalculatorServiceConfiguration.GRPC_PORT)
-      .addService(serviceImpl)
-      .build()
-      .start()
+    .addService(serviceImpl)
+    .build()
+    .start()
   println("Started GRPC server on ${server.port} port...")
   server.awaitTermination()
 }
 
 class CalculatorServiceImpl(
-    addServiceClient: AddServiceClient,
-    subtractServiceClient: SubtractServiceClient,
-    multiplyServiceClient: MultiplyServiceClient
+  addServiceClient: AddServiceClient,
+  subtractServiceClient: SubtractServiceClient,
+  multiplyServiceClient: MultiplyServiceClient
 ) : CalculatorGrpc.CalculatorImplBase() {
   private val evaluator = AsyncEvaluator(addServiceClient, subtractServiceClient, multiplyServiceClient)
   override fun evaluate(request: EvaluateRequest, responseObserver: StreamObserver<EvaluateResponse>) {
     GlobalScope.launch {
       val result = evaluator.evaluate(request.expression).await()
       val response = EvaluateResponse.newBuilder()
-          .setResult(result)
-          .build()
+        .setResult(result)
+        .build()
       responseObserver.onNext(response)
       responseObserver.onCompleted()
     }.invokeOnCompletion { ex ->

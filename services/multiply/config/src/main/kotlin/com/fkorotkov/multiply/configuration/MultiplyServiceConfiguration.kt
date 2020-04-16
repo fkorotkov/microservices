@@ -10,9 +10,9 @@ object MultiplyServiceConfiguration {
 
   fun createClient(): MultiplyServiceClient {
     val channel = ManagedChannelBuilder.forAddress("multiply", GRPC_PORT)
-        .enableRetry()
-        .maxRetryAttempts(3)
-        .build()
+      .enableRetry()
+      .maxRetryAttempts(3)
+      .build()
     val futureStub = MultiplyGrpc.newFutureStub(channel)
 
     return MultiplyServiceClientImpl(futureStub)

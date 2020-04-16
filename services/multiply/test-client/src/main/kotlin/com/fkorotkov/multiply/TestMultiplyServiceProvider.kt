@@ -16,9 +16,9 @@ class TestMultiplyServiceProvider {
   private val serviceImpl: MultiplyServiceImpl = MultiplyServiceImpl()
 
   private val inProcessServer = InProcessServerBuilder.forName(testServiceName)
-      .addService(serviceImpl)
-      .directExecutor()
-      .build()
+    .addService(serviceImpl)
+    .directExecutor()
+    .build()
 
   fun start() = inProcessServer.start()
 

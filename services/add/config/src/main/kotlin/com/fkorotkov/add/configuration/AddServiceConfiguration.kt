@@ -10,9 +10,9 @@ object AddServiceConfiguration {
 
   fun createClient(): AddServiceClient {
     val channel = ManagedChannelBuilder.forAddress("add", GRPC_PORT)
-        .enableRetry()
-        .maxRetryAttempts(3)
-        .build()
+      .enableRetry()
+      .maxRetryAttempts(3)
+      .build()
     val futureStub = AddGrpc.newFutureStub(channel)
 
     return AddServiceClientImpl(futureStub)

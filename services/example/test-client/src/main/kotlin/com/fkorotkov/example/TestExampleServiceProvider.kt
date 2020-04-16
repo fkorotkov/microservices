@@ -16,9 +16,9 @@ class TestExampleServiceProvider() {
   private val serviceImpl: ExampleServiceImpl = ExampleServiceImpl()
 
   private val inProcessServer = InProcessServerBuilder.forName(testServiceName)
-      .addService(serviceImpl)
-      .directExecutor()
-      .build()
+    .addService(serviceImpl)
+    .directExecutor()
+    .build()
 
   fun start() = inProcessServer.start()
 

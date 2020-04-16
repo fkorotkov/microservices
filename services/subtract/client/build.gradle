@@ -1,7 +1,7 @@
 dependencies {
-    implementation project(":services:subtract:api")
+  implementation project(":services:subtract:api")
 
-    api libraries['org.jetbrains.kotlin:kotlin-stdlib']
-    api libraries['org.jetbrains.kotlinx:kotlinx-coroutines-core']
-    api libraries['org.jetbrains.kotlinx:kotlinx-coroutines-guava']
+  api libraries['org.jetbrains.kotlin:kotlin-stdlib']
+  api libraries['org.jetbrains.kotlinx:kotlinx-coroutines-core']
+  api libraries['org.jetbrains.kotlinx:kotlinx-coroutines-guava']
 }
