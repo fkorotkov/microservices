@@ -1,6 +1,6 @@
 package com.fkorotkov.subtract.configuration
 
-import com.fkorotkov.services.subtract.grpc.SubtractGrpc
+import com.fkorotkov.services.subtract.grpc.SubtractGrpcKt
 import com.fkorotkov.subtract.SubtractServiceClient
 import com.fkorotkov.subtract.impl.SubtractServiceClientImpl
 import io.grpc.ManagedChannelBuilder
@@ -13,8 +13,8 @@ object SubtractServiceConfiguration {
       .enableRetry()
       .maxRetryAttempts(3)
       .build()
-    val futureStub = SubtractGrpc.newFutureStub(channel)
 
-    return SubtractServiceClientImpl(futureStub)
+    val stub = SubtractGrpcKt.SubtractCoroutineStub(channel)
+    return SubtractServiceClientImpl(stub)
   }
 }

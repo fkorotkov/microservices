@@ -2,7 +2,7 @@ package com.fkorotkov.add.configuration
 
 import com.fkorotkov.add.AddServiceClient
 import com.fkorotkov.add.impl.AddServiceClientImpl
-import com.fkorotkov.services.add.grpc.AddGrpc
+import com.fkorotkov.services.add.grpc.AddGrpcKt
 import io.grpc.ManagedChannelBuilder
 
 object AddServiceConfiguration {
@@ -13,8 +13,7 @@ object AddServiceConfiguration {
       .enableRetry()
       .maxRetryAttempts(3)
       .build()
-    val futureStub = AddGrpc.newFutureStub(channel)
-
-    return AddServiceClientImpl(futureStub)
+    val stub = AddGrpcKt.AddCoroutineStub(channel)
+    return AddServiceClientImpl(stub)
   }
 }

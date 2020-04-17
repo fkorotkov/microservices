@@ -1,4 +1,5 @@
 apply plugin: "com.google.protobuf"
+apply plugin: "kotlin"
 
 buildscript {
   dependencies {
@@ -14,10 +15,14 @@ protobuf {
     grpc {
       artifact = libraries['io.grpc:protoc-gen-grpc-java']
     }
+    grpckt {
+      artifact = libraries['io.grpc:protoc-gen-grpc-kotlin']
+    }
   }
   generateProtoTasks {
     all()*.plugins {
       grpc {}
+      grpckt {}
     }
   }
 }
@@ -28,6 +33,9 @@ sourceSets {
       srcDir file("${protobuf.generatedFilesBaseDir}/main/grpc")
       srcDir file("${protobuf.generatedFilesBaseDir}/main/java")
     }
+    kotlin {
+      srcDir file("${protobuf.generatedFilesBaseDir}/main/grpckt")
+    }
   }
 }
 
@@ -36,5 +44,9 @@ dependencies {
   api libraries['io.grpc:grpc-core']
   api libraries['io.grpc:grpc-protobuf']
   api libraries['io.grpc:grpc-stub']
+  api libraries['io.grpc:grpc-kotlin-stub']
   api libraries['javax.annotation:javax.annotation-api']
+
+  api libraries['org.jetbrains.kotlin:kotlin-stdlib']
+  api libraries['org.jetbrains.kotlinx:kotlinx-coroutines-core']
 }

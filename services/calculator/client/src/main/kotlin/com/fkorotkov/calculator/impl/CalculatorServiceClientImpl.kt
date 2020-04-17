@@ -1,15 +1,14 @@
 package com.fkorotkov.calculator.impl
 
 import com.fkorotkov.calculator.CalculatorServiceClient
-import com.fkorotkov.services.calculator.grpc.CalculatorGrpc
+import com.fkorotkov.services.calculator.grpc.CalculatorGrpcKt
 import com.fkorotkov.services.calculator.grpc.EvaluateRequest
-import kotlinx.coroutines.guava.asDeferred
 
-class CalculatorServiceClientImpl(private val service: CalculatorGrpc.CalculatorFutureStub) : CalculatorServiceClient {
+class CalculatorServiceClientImpl(private val stub: CalculatorGrpcKt.CalculatorCoroutineStub) : CalculatorServiceClient {
   override suspend fun evaluate(expression: String): Long {
     val request = EvaluateRequest.newBuilder()
       .setExpression(expression)
       .build()
-    return service.evaluate(request).asDeferred().await().result
+    return stub.evaluate(request).result
   }
 }

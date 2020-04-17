@@ -1,7 +1,7 @@
 package com.fkorotkov.example
 
 import com.fkorotkov.example.impl.ExampleServiceClientImpl
-import com.fkorotkov.services.example.grpc.ExampleGrpc
+import com.fkorotkov.services.example.grpc.ExampleGrpcKt
 import io.grpc.ManagedChannel
 import io.grpc.inprocess.InProcessChannelBuilder
 import io.grpc.inprocess.InProcessServerBuilder
@@ -32,7 +32,7 @@ class TestExampleServiceProvider() {
   }
 
   val client: ExampleServiceClient by lazy {
-    val futureStub = ExampleGrpc.newFutureStub(inprocessChannel)
+    val futureStub = ExampleGrpcKt.ExampleCoroutineStub(inprocessChannel)
     ExampleServiceClientImpl(futureStub)
   }
 }

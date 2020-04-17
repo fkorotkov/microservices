@@ -1,7 +1,7 @@
 package com.fkorotkov.multiply
 
 import com.fkorotkov.multiply.impl.MultiplyServiceClientImpl
-import com.fkorotkov.services.multiply.grpc.MultiplyGrpc
+import com.fkorotkov.services.multiply.grpc.MultiplyGrpcKt
 import io.grpc.ManagedChannel
 import io.grpc.inprocess.InProcessChannelBuilder
 import io.grpc.inprocess.InProcessServerBuilder
@@ -32,7 +32,7 @@ class TestMultiplyServiceProvider {
   }
 
   val client: MultiplyServiceClient by lazy {
-    val futureStub = MultiplyGrpc.newFutureStub(inprocessChannel)
+    val futureStub = MultiplyGrpcKt.MultiplyCoroutineStub(inprocessChannel)
     MultiplyServiceClientImpl(futureStub)
   }
 }

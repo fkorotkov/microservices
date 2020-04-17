@@ -1,6 +1,6 @@
 package com.fkorotkov.subtract
 
-import com.fkorotkov.services.subtract.grpc.SubtractGrpc
+import com.fkorotkov.services.subtract.grpc.SubtractGrpcKt
 import com.fkorotkov.subtract.impl.SubtractServiceClientImpl
 import io.grpc.ManagedChannel
 import io.grpc.inprocess.InProcessChannelBuilder
@@ -32,7 +32,7 @@ class TestSubtractServiceProvider() {
   }
 
   val client: SubtractServiceClient by lazy {
-    val futureStub = SubtractGrpc.newFutureStub(inprocessChannel)
+    val futureStub = SubtractGrpcKt.SubtractCoroutineStub(inprocessChannel)
     SubtractServiceClientImpl(futureStub)
   }
 }
