@@ -2,7 +2,7 @@ package com.fkorotkov.calculator.configuration
 
 import com.fkorotkov.calculator.CalculatorServiceClient
 import com.fkorotkov.calculator.impl.CalculatorServiceClientImpl
-import com.fkorotkov.services.calculator.grpc.CalculatorGrpc
+import com.fkorotkov.services.calculator.grpc.CalculatorGrpcKt
 import io.grpc.ManagedChannelBuilder
 
 object CalculatorServiceConfiguration {
@@ -13,8 +13,7 @@ object CalculatorServiceConfiguration {
       .enableRetry()
       .maxRetryAttempts(3)
       .build()
-    val futureStub = CalculatorGrpc.newFutureStub(channel)
-
-    return CalculatorServiceClientImpl(futureStub)
+    val stub = CalculatorGrpcKt.CalculatorCoroutineStub(channel)
+    return CalculatorServiceClientImpl(stub)
   }
 }

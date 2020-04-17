@@ -4,6 +4,7 @@ import com.fkorotkov.add.AddServiceClient
 import com.fkorotkov.calculator.impl.CalculatorServiceClientImpl
 import com.fkorotkov.multiply.MultiplyServiceClient
 import com.fkorotkov.services.calculator.grpc.CalculatorGrpc
+import com.fkorotkov.services.calculator.grpc.CalculatorGrpcKt
 import com.fkorotkov.subtract.SubtractServiceClient
 import io.grpc.ManagedChannel
 import io.grpc.inprocess.InProcessChannelBuilder
@@ -39,7 +40,7 @@ class TestCalculatorServiceProvider(
   }
 
   val client: CalculatorServiceClient by lazy {
-    val futureStub = CalculatorGrpc.newFutureStub(inprocessChannel)
+    val futureStub = CalculatorGrpcKt.CalculatorCoroutineStub(inprocessChannel)
     CalculatorServiceClientImpl(futureStub)
   }
 }

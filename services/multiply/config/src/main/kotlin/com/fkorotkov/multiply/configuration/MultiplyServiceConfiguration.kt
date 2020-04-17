@@ -2,7 +2,7 @@ package com.fkorotkov.multiply.configuration
 
 import com.fkorotkov.multiply.MultiplyServiceClient
 import com.fkorotkov.multiply.impl.MultiplyServiceClientImpl
-import com.fkorotkov.services.multiply.grpc.MultiplyGrpc
+import com.fkorotkov.services.multiply.grpc.MultiplyGrpcKt
 import io.grpc.ManagedChannelBuilder
 
 object MultiplyServiceConfiguration {
@@ -13,8 +13,8 @@ object MultiplyServiceConfiguration {
       .enableRetry()
       .maxRetryAttempts(3)
       .build()
-    val futureStub = MultiplyGrpc.newFutureStub(channel)
 
-    return MultiplyServiceClientImpl(futureStub)
+    val stub = MultiplyGrpcKt.MultiplyCoroutineStub(channel)
+    return MultiplyServiceClientImpl(stub)
   }
 }
