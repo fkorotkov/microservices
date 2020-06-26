@@ -1,6 +1,6 @@
-package com.fkorotkov.multiply.impl
+package com.fkorotkov.multiply.client.impl
 
-import com.fkorotkov.multiply.MultiplyServiceClient
+import com.fkorotkov.multiply.client.MultiplyServiceClient
 import com.fkorotkov.services.multiply.grpc.CalculateRequest
 import com.fkorotkov.services.multiply.grpc.MultiplyGrpcKt
 

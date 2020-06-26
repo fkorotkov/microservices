@@ -1,6 +1,6 @@
-package com.fkorotkov.add.impl
+package com.fkorotkov.add.client.impl
 
-import com.fkorotkov.add.AddServiceClient
+import com.fkorotkov.add.client.AddServiceClient
 import com.fkorotkov.services.add.grpc.AddGrpcKt
 import com.fkorotkov.services.add.grpc.CalculateRequest
 

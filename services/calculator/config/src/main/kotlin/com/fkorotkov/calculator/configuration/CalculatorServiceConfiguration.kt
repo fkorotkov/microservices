@@ -1,7 +1,7 @@
 package com.fkorotkov.calculator.configuration
 
-import com.fkorotkov.calculator.CalculatorServiceClient
-import com.fkorotkov.calculator.impl.CalculatorServiceClientImpl
+import com.fkorotkov.calculator.client.CalculatorServiceClient
+import com.fkorotkov.calculator.client.impl.CalculatorServiceClientImpl
 import com.fkorotkov.services.calculator.grpc.CalculatorGrpcKt
 import io.grpc.ManagedChannelBuilder
 

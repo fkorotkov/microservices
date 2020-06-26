@@ -1,19 +1,21 @@
-package com.fkorotkov.add
+package com.fkorotkov.subtract.test
 
-import com.fkorotkov.add.impl.AddServiceClientImpl
-import com.fkorotkov.services.add.grpc.AddGrpcKt
+import com.fkorotkov.services.subtract.grpc.SubtractGrpcKt
+import com.fkorotkov.subtract.SubtractServiceImpl
+import com.fkorotkov.subtract.client.SubtractServiceClient
+import com.fkorotkov.subtract.client.impl.SubtractServiceClientImpl
 import io.grpc.ManagedChannel
 import io.grpc.inprocess.InProcessChannelBuilder
 import io.grpc.inprocess.InProcessServerBuilder
 import java.util.concurrent.TimeUnit
 
 
-class TestAddServiceProvider {
+class TestSubtractServiceProvider() {
   companion object {
-    private val testServiceName = "add"
+    private val testServiceName = "subtract"
   }
 
-  private val serviceImpl: AddServiceImpl = AddServiceImpl()
+  private val serviceImpl: SubtractServiceImpl = SubtractServiceImpl()
 
   private val inProcessServer = InProcessServerBuilder.forName(testServiceName)
     .addService(serviceImpl)
@@ -31,8 +33,8 @@ class TestAddServiceProvider {
     InProcessChannelBuilder.forName(testServiceName).directExecutor().build()
   }
 
-  val client: AddServiceClient by lazy {
-    val futureStub = AddGrpcKt.AddCoroutineStub(inprocessChannel)
-    AddServiceClientImpl(futureStub)
+  val client: SubtractServiceClient by lazy {
+    val futureStub = SubtractGrpcKt.SubtractCoroutineStub(inprocessChannel)
+    SubtractServiceClientImpl(futureStub)
   }
 }

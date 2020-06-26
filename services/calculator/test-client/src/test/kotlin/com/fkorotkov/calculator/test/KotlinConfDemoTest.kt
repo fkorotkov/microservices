@@ -1,15 +1,17 @@
-package com.fkorotkov.calculator
+@file:Suppress("DEPRECATION")
 
-import com.fkorotkov.add.TestAddServiceProvider
-import com.fkorotkov.multiply.TestMultiplyServiceProvider
-import com.fkorotkov.subtract.TestSubtractServiceProvider
+package com.fkorotkov.calculator.test
+
+import com.fkorotkov.add.test.TestAddServiceProvider
+import com.fkorotkov.multiply.test.TestMultiplyServiceProvider
+import com.fkorotkov.subtract.test.TestSubtractServiceProvider
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
-class TestCalculatorServiceProviderTest {
+class KotlinConfDemoTest {
   lateinit var addProvider: TestAddServiceProvider
   lateinit var subtractProvider: TestSubtractServiceProvider
   lateinit var multiplyProvider: TestMultiplyServiceProvider
@@ -36,26 +38,8 @@ class TestCalculatorServiceProviderTest {
   }
 
   @Test
-  fun complex() = runBlocking {
-    val result = calculatorProvider.client.evaluate("1+2*3-(4-5*6)")
-    assertEquals(33, result)
-  }
-
-  @Test
-  fun addTwoNumbers() = runBlocking {
-    val result = calculatorProvider.client.evaluate("1 + 2")
-    assertEquals(3, result)
-  }
-
-  @Test
-  fun subtractTwoNumbers() = runBlocking {
-    val result = calculatorProvider.client.evaluate("1 - 2")
-    assertEquals(-1, result)
-  }
-
-  @Test
-  fun multiplyTwoNumbers() = runBlocking {
-    val result = calculatorProvider.client.evaluate("2 * 2")
-    assertEquals(4, result)
+  fun demo() = runBlocking {
+    val result = calculatorProvider.client.evaluate("(1+2)*(3+4)")
+    assertEquals(21, result)
   }
 }

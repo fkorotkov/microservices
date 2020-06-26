@@ -1,7 +1,7 @@
 package com.fkorotkov.add.configuration
 
-import com.fkorotkov.add.AddServiceClient
-import com.fkorotkov.add.impl.AddServiceClientImpl
+import com.fkorotkov.add.client.AddServiceClient
+import com.fkorotkov.add.client.impl.AddServiceClientImpl
 import com.fkorotkov.services.add.grpc.AddGrpcKt
 import io.grpc.ManagedChannelBuilder
 

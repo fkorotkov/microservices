@@ -1,19 +1,21 @@
-package com.fkorotkov.multiply
+package com.fkorotkov.example.test
 
-import com.fkorotkov.multiply.impl.MultiplyServiceClientImpl
-import com.fkorotkov.services.multiply.grpc.MultiplyGrpcKt
+import com.fkorotkov.example.ExampleServiceImpl
+import com.fkorotkov.example.client.ExampleServiceClient
+import com.fkorotkov.example.client.impl.ExampleServiceClientImpl
+import com.fkorotkov.services.example.grpc.ExampleGrpcKt
 import io.grpc.ManagedChannel
 import io.grpc.inprocess.InProcessChannelBuilder
 import io.grpc.inprocess.InProcessServerBuilder
 import java.util.concurrent.TimeUnit
 
 
-class TestMultiplyServiceProvider {
+class TestExampleServiceProvider() {
   companion object {
-    private val testServiceName = "multiply"
+    private val testServiceName = "example"
   }
 
-  private val serviceImpl: MultiplyServiceImpl = MultiplyServiceImpl()
+  private val serviceImpl: ExampleServiceImpl = ExampleServiceImpl()
 
   private val inProcessServer = InProcessServerBuilder.forName(testServiceName)
     .addService(serviceImpl)
@@ -31,8 +33,8 @@ class TestMultiplyServiceProvider {
     InProcessChannelBuilder.forName(testServiceName).directExecutor().build()
   }
 
-  val client: MultiplyServiceClient by lazy {
-    val futureStub = MultiplyGrpcKt.MultiplyCoroutineStub(inprocessChannel)
-    MultiplyServiceClientImpl(futureStub)
+  val client: ExampleServiceClient by lazy {
+    val futureStub = ExampleGrpcKt.ExampleCoroutineStub(inprocessChannel)
+    ExampleServiceClientImpl(futureStub)
   }
 }

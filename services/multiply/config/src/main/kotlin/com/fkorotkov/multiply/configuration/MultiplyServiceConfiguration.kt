@@ -1,7 +1,7 @@
 package com.fkorotkov.multiply.configuration
 
-import com.fkorotkov.multiply.MultiplyServiceClient
-import com.fkorotkov.multiply.impl.MultiplyServiceClientImpl
+import com.fkorotkov.multiply.client.MultiplyServiceClient
+import com.fkorotkov.multiply.client.impl.MultiplyServiceClientImpl
 import com.fkorotkov.services.multiply.grpc.MultiplyGrpcKt
 import io.grpc.ManagedChannelBuilder
 

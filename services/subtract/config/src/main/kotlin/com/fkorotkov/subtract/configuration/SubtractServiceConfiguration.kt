@@ -1,8 +1,8 @@
 package com.fkorotkov.subtract.configuration
 
 import com.fkorotkov.services.subtract.grpc.SubtractGrpcKt
-import com.fkorotkov.subtract.SubtractServiceClient
-import com.fkorotkov.subtract.impl.SubtractServiceClientImpl
+import com.fkorotkov.subtract.client.SubtractServiceClient
+import com.fkorotkov.subtract.client.impl.SubtractServiceClientImpl
 import io.grpc.ManagedChannelBuilder
 
 object SubtractServiceConfiguration {

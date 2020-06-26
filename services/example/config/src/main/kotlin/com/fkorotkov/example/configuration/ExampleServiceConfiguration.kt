@@ -1,7 +1,7 @@
 package com.fkorotkov.example.configuration
 
-import com.fkorotkov.example.ExampleServiceClient
-import com.fkorotkov.example.impl.ExampleServiceClientImpl
+import com.fkorotkov.example.client.ExampleServiceClient
+import com.fkorotkov.example.client.impl.ExampleServiceClientImpl
 import com.fkorotkov.services.example.grpc.ExampleGrpcKt
 import io.grpc.ManagedChannelBuilder
 

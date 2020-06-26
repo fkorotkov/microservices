@@ -1,4 +1,4 @@
-package com.fkorotkov.subtract
+package com.fkorotkov.add.test
 
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -6,12 +6,12 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
-class TestSubtractServiceProviderTest {
-  lateinit var provider: TestSubtractServiceProvider
+class TestAddServiceProviderTest {
+  lateinit var provider: TestAddServiceProvider
 
   @Before
   fun setUp() {
-    provider = TestSubtractServiceProvider()
+    provider = TestAddServiceProvider()
     provider.start()
   }
 
@@ -21,11 +21,10 @@ class TestSubtractServiceProviderTest {
   }
 
   @Test
-  fun SubtractTwoNumbers() {
+  fun addTwoNumbers() {
     val result = runBlocking {
       provider.client.calculate(1, 2)
     }
-    assertEquals(-1, result)
+    assertEquals(3, result)
   }
-
 }

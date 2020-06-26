@@ -2,9 +2,9 @@ package com.fkorotkov.calculator.evaluator
 
 import com.fathzer.soft.javaluator.AbstractEvaluator
 import com.fathzer.soft.javaluator.Operator
-import com.fkorotkov.add.AddServiceClient
-import com.fkorotkov.multiply.MultiplyServiceClient
-import com.fkorotkov.subtract.SubtractServiceClient
+import com.fkorotkov.add.client.AddServiceClient
+import com.fkorotkov.multiply.client.MultiplyServiceClient
+import com.fkorotkov.subtract.client.SubtractServiceClient
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async

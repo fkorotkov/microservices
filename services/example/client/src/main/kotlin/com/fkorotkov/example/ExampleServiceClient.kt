@@ -1,3 +1,0 @@
-package com.fkorotkov.example
-
-interface ExampleServiceClient

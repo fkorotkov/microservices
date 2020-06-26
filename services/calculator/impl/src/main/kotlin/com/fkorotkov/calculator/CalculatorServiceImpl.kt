@@ -1,15 +1,15 @@
 package com.fkorotkov.calculator
 
-import com.fkorotkov.add.AddServiceClient
+import com.fkorotkov.add.client.AddServiceClient
 import com.fkorotkov.add.configuration.AddServiceConfiguration
 import com.fkorotkov.calculator.configuration.CalculatorServiceConfiguration
 import com.fkorotkov.calculator.evaluator.AsyncEvaluator
-import com.fkorotkov.multiply.MultiplyServiceClient
+import com.fkorotkov.multiply.client.MultiplyServiceClient
 import com.fkorotkov.multiply.configuration.MultiplyServiceConfiguration
 import com.fkorotkov.services.calculator.grpc.CalculatorGrpc
 import com.fkorotkov.services.calculator.grpc.EvaluateRequest
 import com.fkorotkov.services.calculator.grpc.EvaluateResponse
-import com.fkorotkov.subtract.SubtractServiceClient
+import com.fkorotkov.subtract.client.SubtractServiceClient
 import com.fkorotkov.subtract.configuration.SubtractServiceConfiguration
 import io.grpc.ServerBuilder
 import io.grpc.stub.StreamObserver

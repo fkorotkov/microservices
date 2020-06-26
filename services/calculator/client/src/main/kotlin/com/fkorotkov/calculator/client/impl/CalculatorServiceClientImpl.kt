@@ -1,6 +1,6 @@
-package com.fkorotkov.calculator.impl
+package com.fkorotkov.calculator.client.impl
 
-import com.fkorotkov.calculator.CalculatorServiceClient
+import com.fkorotkov.calculator.client.CalculatorServiceClient
 import com.fkorotkov.services.calculator.grpc.CalculatorGrpcKt
 import com.fkorotkov.services.calculator.grpc.EvaluateRequest
 

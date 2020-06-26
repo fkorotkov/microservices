@@ -1,11 +1,12 @@
-package com.fkorotkov.calculator
+package com.fkorotkov.calculator.test
 
-import com.fkorotkov.add.AddServiceClient
-import com.fkorotkov.calculator.impl.CalculatorServiceClientImpl
-import com.fkorotkov.multiply.MultiplyServiceClient
-import com.fkorotkov.services.calculator.grpc.CalculatorGrpc
+import com.fkorotkov.add.client.AddServiceClient
+import com.fkorotkov.calculator.CalculatorServiceImpl
+import com.fkorotkov.calculator.client.CalculatorServiceClient
+import com.fkorotkov.calculator.client.impl.CalculatorServiceClientImpl
+import com.fkorotkov.multiply.client.MultiplyServiceClient
 import com.fkorotkov.services.calculator.grpc.CalculatorGrpcKt
-import com.fkorotkov.subtract.SubtractServiceClient
+import com.fkorotkov.subtract.client.SubtractServiceClient
 import io.grpc.ManagedChannel
 import io.grpc.inprocess.InProcessChannelBuilder
 import io.grpc.inprocess.InProcessServerBuilder
