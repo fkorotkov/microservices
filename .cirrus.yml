@@ -1,11 +1,18 @@
-container:
-  image: gradle:jdk11
-
-check_task:
+task:
+  name: Gradle Tests
+  container:
+    image: gradle:jdk11
+    cpu: 4
+    memory: 16G
   gradle_cache:
     folder: ~/.gradle/caches
+    reupload_on_changes: true
   check_script: gradle check
-  cleanup_before_cache_script:
-    - rm -rf ~/.gradle/caches/journal-1/
-    - rm -rf ~/.gradle/caches/$GRADLE_VERSION/
-    - find ~/.gradle/caches/ -name "*.lock" -type f -delete
+
+task:
+  name: Bazel Tests
+  container:
+    image: l.gcr.io/google/bazel:latest
+    cpu: 4
+    memory: 16G
+  test_script: bazel test --remote_http_cache=http://$CIRRUS_HTTP_CACHE_HOST //services/...

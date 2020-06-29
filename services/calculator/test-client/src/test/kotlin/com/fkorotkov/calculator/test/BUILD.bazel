@@ -1,0 +1,34 @@
+# GENERATED
+load("@io_bazel_rules_kotlin//kotlin:kotlin.bzl", "kt_jvm_library", "kt_jvm_test")
+
+kt_jvm_library(
+  name = "lib",
+  srcs = glob(["*.kt"]),
+  visibility = ["//visibility:public"],
+  deps = [
+    "//services/add/test-client/src/main/kotlin/com/fkorotkov/add/test:kt",
+    "//services/add/test-client/src/test/kotlin/com/fkorotkov/add/test:lib",
+    "//services/calculator/test-client/src/main/kotlin/com/fkorotkov/calculator/test:kt",
+    "//services/multiply/test-client/src/main/kotlin/com/fkorotkov/multiply/test:kt",
+    "//services/multiply/test-client/src/test/kotlin/com/fkorotkov/multiply/test:lib",
+    "//services/subtract/test-client/src/main/kotlin/com/fkorotkov/subtract/test:kt",
+    "//services/subtract/test-client/src/test/kotlin/com/fkorotkov/subtract/test:lib",
+    "@maven//:junit_junit",
+    "@maven//:org_jetbrains_kotlinx_kotlinx_coroutines_core",
+  ],
+)
+
+kt_jvm_test(
+  name = "KotlinConfDemoTest",
+  srcs = ["KotlinConfDemoTest.kt"],
+  test_class = "com.fkorotkov.calculator.test.KotlinConfDemoTest",
+  visibility = ["//visibility:public"],
+  deps = [ ":lib" ],
+)
+kt_jvm_test(
+  name = "TestCalculatorServiceProviderTest",
+  srcs = ["TestCalculatorServiceProviderTest.kt"],
+  test_class = "com.fkorotkov.calculator.test.TestCalculatorServiceProviderTest",
+  visibility = ["//visibility:public"],
+  deps = [ ":lib" ],
+)

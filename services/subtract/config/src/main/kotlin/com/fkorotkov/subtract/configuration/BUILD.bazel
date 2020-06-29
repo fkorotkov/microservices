@@ -1,0 +1,14 @@
+# GENERATED
+load("@io_bazel_rules_kotlin//kotlin:kotlin.bzl", "kt_jvm_library")
+
+kt_jvm_library(
+  name = "kt",
+  srcs = glob(["*.kt"]),
+  visibility = ["//visibility:public"],
+  deps = [
+    "//services/subtract/api/src/main/proto:kt_proto",
+    "//services/subtract/client/src/main/kotlin/com/fkorotkov/subtract/client/impl:kt",
+    "//services/subtract/client/src/main/kotlin/com/fkorotkov/subtract/client:kt",
+    "@maven//:io_grpc_grpc_core",
+  ],
+)

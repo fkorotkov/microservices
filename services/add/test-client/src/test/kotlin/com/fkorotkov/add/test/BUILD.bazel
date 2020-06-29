@@ -1,0 +1,21 @@
+# GENERATED
+load("@io_bazel_rules_kotlin//kotlin:kotlin.bzl", "kt_jvm_library", "kt_jvm_test")
+
+kt_jvm_library(
+  name = "lib",
+  srcs = glob(["*.kt"]),
+  visibility = ["//visibility:public"],
+  deps = [
+    "//services/add/test-client/src/main/kotlin/com/fkorotkov/add/test:kt",
+    "@maven//:junit_junit",
+    "@maven//:org_jetbrains_kotlinx_kotlinx_coroutines_core",
+  ],
+)
+
+kt_jvm_test(
+  name = "TestAddServiceProviderTest",
+  srcs = ["TestAddServiceProviderTest.kt"],
+  test_class = "com.fkorotkov.add.test.TestAddServiceProviderTest",
+  visibility = ["//visibility:public"],
+  deps = [ ":lib" ],
+)
