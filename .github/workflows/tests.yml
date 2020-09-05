@@ -12,4 +12,6 @@ jobs:
       - uses: cirruslabs/http-cache-action@master
       - name: Setup Bazel
         uses: abhinavsingh/setup-bazel@v3
+        with:
+          version: 3.5.0
       - run: bazel test --remote_http_cache=http://localhost:123321 //services/...
