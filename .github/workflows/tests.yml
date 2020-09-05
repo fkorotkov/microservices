@@ -1,0 +1,15 @@
+name: Tests
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Test Microservices
+    steps:
+      - uses: actions/checkout@v2
+      - uses: cirruslabs/http-cache-action@master
+      - name: Setup Bazel
+        uses: abhinavsingh/setup-bazel@v3
+      - run: ./bazel test --remote_http_cache=http://localhost:123321 //services/...
