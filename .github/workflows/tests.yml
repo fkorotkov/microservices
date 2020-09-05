@@ -4,9 +4,9 @@ on:
   pull_request:
 
 jobs:
-  test:
+  test-remote:
     runs-on: ubuntu-latest
-    name: Test Microservices
+    name: Bazel (Remote Caching)
     steps:
       - uses: actions/checkout@v2
       - uses: cirruslabs/http-cache-action@master
@@ -15,3 +15,13 @@ jobs:
         with:
           version: 3.5.0
       - run: bazel test --remote_http_cache=http://localhost:12321 //services/...
+  test-local:
+    runs-on: ubuntu-latest
+    name: Bazel (No Caching)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Bazel
+        uses: abhinavsingh/setup-bazel@v3
+        with:
+          version: 3.5.0
+      - run: bazel test //services/...
