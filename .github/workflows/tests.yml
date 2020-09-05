@@ -15,6 +15,10 @@ jobs:
         with:
           version: 3.5.0
       - run: bazel test --remote_http_cache=http://localhost:12321 //services/...
+      - name: debug info
+        run: |
+          docker ps
+          docker logs cache_proxy
   test-local:
     runs-on: ubuntu-latest
     name: Bazel (No Caching)
