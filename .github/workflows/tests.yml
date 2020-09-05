@@ -15,7 +15,7 @@ jobs:
         with:
           version: 3.5.0
       - run: bazel version
-      - run: bazel test --remote_http_cache=http://127.0.0.1:12321 //services/...
+      - run: bazel test --remote_http_cache=http://0.0.0.0:12321 //services/...
       - name: debug info
         run: |
           docker ps
