@@ -4,12 +4,15 @@ on:
   pull_request:
 
 jobs:
-  test-remote:
+  test-bazel:
     runs-on: ubuntu-latest
-    name: Bazel (Remote Caching)
+    name: Bazel
     steps:
       - uses: actions/checkout@v2
       - uses: cirruslabs/http-cache-action@master
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 13
       - name: Setup Bazel
         uses: abhinavsingh/setup-bazel@v3
         with:
@@ -20,14 +23,17 @@ jobs:
         run: |
           docker ps
           docker logs cache_proxy
-  test-local:
+  test-gradle:
     runs-on: ubuntu-latest
-    name: Bazel (No Caching)
+    name: Gradle
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Bazel
-        uses: abhinavsingh/setup-bazel@v3
+      - uses: cirruslabs/http-cache-action@master
+      - uses: actions/setup-java@v1
         with:
-          version: 3.5.0
-      - run: bazel version
-      - run: bazel test //services/...
+          java-version: 13
+      - run: ./gradlew check
+      - name: debug info
+        run: |
+          docker ps
+          docker logs cache_proxy
