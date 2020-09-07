@@ -1,3 +1,6 @@
+env:
+  CIRRUS_AGENT_VERSION: v1.8.0
+
 task:
   name: Gradle Tests
   container:
