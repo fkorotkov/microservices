@@ -10,6 +10,21 @@ task:
   check_script: gradle check
 
 task:
+  name: Qodana
+  container:
+    image: jetbrains/qodana:latest
+  env:
+    CIRRUS_WORKING_DIR: /data/project
+  generate_report_script:
+    - /opt/idea/bin/entrypoint --save-report --report-dir=report
+  always:
+    results_artifacts:
+      path: "report/results/result-allProblems.json"
+      format: qodana
+    report_artifacts:
+      path: "report/**"
+
+task:
   name: Bazel Tests
   container:
     image: l.gcr.io/google/bazel:latest
