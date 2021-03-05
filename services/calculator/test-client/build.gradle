@@ -10,4 +10,7 @@ dependencies { // GENERATED
   implementation project(":services:calculator:impl")
   implementation project(":services:multiply:client")
   implementation project(":services:subtract:client")
+  testImplementation project(":services:add:test-client")
+  testImplementation project(":services:multiply:test-client")
+  testImplementation project(":services:subtract:test-client")
 }
