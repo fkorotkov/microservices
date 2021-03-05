@@ -57,3 +57,6 @@ subprojects {
     }
   }
 }
+
+dependencies { // GENERATED
+}

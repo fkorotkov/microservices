@@ -27,8 +27,10 @@ jar {
 }
 
 dependencies {
+  implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
+}
+
+dependencies { // GENERATED
   implementation project(":services:multiply:api")
   implementation project(":services:multiply:config")
-
-  implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
 }

@@ -1,8 +1,10 @@
 apply plugin: "kotlin"
 
 dependencies {
+  implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
+}
+
+dependencies { // GENERATED
   implementation project(":services:calculator:api")
   implementation project(":services:calculator:client")
-
-  implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
 }

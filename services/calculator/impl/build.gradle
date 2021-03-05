@@ -27,6 +27,12 @@ jar {
 }
 
 dependencies {
+  implementation libraries['com.fathzer:javaluator']
+  implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
+  implementation libraries['org.jetbrains.kotlinx:kotlinx-coroutines-core']
+}
+
+dependencies { // GENERATED
   implementation project(":services:add:client")
   implementation project(":services:add:config")
   implementation project(":services:calculator:api")
@@ -35,8 +41,4 @@ dependencies {
   implementation project(":services:multiply:config")
   implementation project(":services:subtract:client")
   implementation project(":services:subtract:config")
-
-  implementation libraries['com.fathzer:javaluator']
-  implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
-  implementation libraries['org.jetbrains.kotlinx:kotlinx-coroutines-core']
 }

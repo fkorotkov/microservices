@@ -1,9 +1,10 @@
 dependencies {
-  api project(":services:add:client")
-
-  implementation project(":services:add:api")
-  implementation project(":services:add:impl")
-
   implementation libraries['org.jetbrains.kotlin:kotlin-stdlib']
   testImplementation libraries['junit:junit']
+}
+
+dependencies { // GENERATED
+  implementation project(":services:add:api")
+  implementation project(":services:add:client")
+  implementation project(":services:add:impl")
 }

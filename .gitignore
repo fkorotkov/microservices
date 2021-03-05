@@ -9,3 +9,5 @@ bazel-microservices
 bazel-bin
 bazel-out
 bazel-testlogs
+
+report

@@ -50,3 +50,6 @@ dependencies {
   api libraries['org.jetbrains.kotlin:kotlin-stdlib']
   api libraries['org.jetbrains.kotlinx:kotlinx-coroutines-core']
 }
+
+dependencies { // GENERATED
+}
