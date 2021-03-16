@@ -21,6 +21,9 @@ task:
     results_artifacts:
       path: "report/results/result-allProblems.json"
       format: qodana
+    
+    html_report_artifacts:
+      path: "report/**.*"
 
 task:
   name: Bazel Tests
